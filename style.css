@@ -1,0 +1,16 @@
+
+#wall, #trilha{
+    width: 30px;
+    height: 30px;
+
+}
+
+#tabuleiro{
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 630px;
+}
