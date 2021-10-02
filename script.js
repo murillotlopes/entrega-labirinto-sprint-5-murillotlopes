@@ -6,6 +6,8 @@ document.addEventListener('keydown', (e) =>{
     jogada(e)
 })
 
+
+
 const body = document.querySelector('body')
 
 body.appendChild(tabuleiro)
@@ -35,6 +37,7 @@ function quadrasTabuleiro(i, j, mapQ, l, c){
 
     parede.style.backgroundColor = 'blue'
     jogador.style.backgroundColor = 'red'
+    trilha.style.backgroundColor = 'white'
     parede.id = 'wall'
     trilha.id = 'trilha'
     jogador.id = 'jogador'
@@ -48,7 +51,7 @@ function quadrasTabuleiro(i, j, mapQ, l, c){
             jogador.innerText = 'start'
         }
         if(map[i][j] === 'F'){
-            jogador.innerText = 'fim'
+            jogador.innerText = 'end'
         }
 
         return tabuleiro.appendChild(jogador)
@@ -59,7 +62,7 @@ function quadrasTabuleiro(i, j, mapQ, l, c){
         }
         if(map[i][j] === 'F'){
 
-            trilha.innerText = 'fim'
+            trilha.innerText = 'end'
         }
         return tabuleiro.appendChild(trilha)
 
@@ -77,24 +80,35 @@ function posJogador(){
     }
 }
 
-function ganhou(l,c){
-    const venceu = document.createElement('div')
-    let msg = '<p>Parabéns!!!<br>Você venceu</p>'
-    let restart = document.createElement('button')
-    restart.id = restart
-    venceu.id = 'venceu'
-    venceu.innerHTML = msg
-    restart.innerText = 'Jogar de novo'
-    venceu.appendChild(restart)
 
-    body.appendChild(venceu)
+const venceu = document.createElement('div')
+let msg = '<p>Parabéns!!!<br>Você venceu</p>'
+let restart = document.createElement('button')
+
+restart.id = restart
+venceu.id = 'venceu'
+venceu.innerHTML = msg
+restart.innerText = 'Jogar de novo'
+venceu.appendChild(restart)
+
+
+function ganhou(l,c){
 
     if(l === 8 && c === 20){
+        venceu.style.display = 'flex'
         body.appendChild(venceu)
+
+        restart.addEventListener('click', recomecar)
     }
 
 }
-ganhou()
+
+function recomecar(){
+    venceu.style.display = 'none'
+
+    tabuleiro.innerHTML = ''
+    criacaoTabuleiro(9,0)
+}
 
 function jogada(e){
     const direcao = e.key
