@@ -18,6 +18,8 @@ body{
     width: 40px;
     height: 40px;
 
+    text-align: center;
+
 }
 
 #tabuleiro{
@@ -31,7 +33,7 @@ body{
     min-width: 840px;
 }
 
-#venceu{
+#venceu, #regras{
     background-color: rgba(0, 0, 0, 0.8);
 
     padding: 10px;
@@ -44,7 +46,6 @@ body{
 
     text-align: center;
 
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -57,7 +58,7 @@ body{
     height: 100%;
 }
 
-#venceu button{
+#venceu button, #start{
     margin-top: 7px;
     padding: 7px;
 
@@ -65,4 +66,16 @@ body{
 
     font-size: 20px;
 
+}
+
+#venceu{
+    display: none;
+}
+
+#regras{
+    display: flex;
+}
+
+#regras p{
+    padding: 10px;
 }

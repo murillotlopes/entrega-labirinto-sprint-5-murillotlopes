@@ -70,15 +70,6 @@ function quadrasTabuleiro(i, j, mapQ, l, c){
 
 }
 
-function posJogador(){
-    for(let i=0; i<15; i++){
-        for(let j=0; j<21; j++){
-            if(map[i][j] === 'S'){
-                return [i, j]
-            }
-        }
-    }
-}
 
 
 const venceu = document.createElement('div')
@@ -108,6 +99,8 @@ function recomecar(){
 
     tabuleiro.innerHTML = ''
     criacaoTabuleiro(9,0)
+    l = 9
+    c = 0
 }
 
 function jogada(e){
@@ -158,4 +151,22 @@ function jogada(e){
         }
     }
 }
+
+const regras = document.createElement('div')
+regras.id = 'regras'
+const listRegras = document.createElement('p')
+listRegras.id = 'listRegras'
+const start = document.createElement('button')
+start.id = 'start'
+start.innerText = 'Iniciar jogo'
+
+
+listRegras.innerHTML = '<p>Regras do Jogo<br>Com as setas do teclado, mova o bloco vermelho do "start" até "end" passando apenas pelos espaços em branco</p>'
+regras.appendChild(listRegras)
+regras.appendChild(start)
+body.appendChild(regras)
+
+start.addEventListener('click', ()=>{
+    regras.style.display = 'none'
+})
 
